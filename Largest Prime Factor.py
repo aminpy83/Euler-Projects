@@ -1,6 +1,6 @@
 from math import sqrt, ceil
 
-def IsPrime(n):
+def is_prime(n):
     for i in range(2, ceil(sqrt(n))):
         if n % i == 0:
             return False
@@ -23,7 +23,7 @@ while prime <= ceil(sqrt(num)) :
 
 for factor in factors:
     # print(factor)
-    if not(IsPrime(factor)):
+    if not(is_prime(factor)):
         composites.append(factors[factors.index(factor)])
 print(factors)
 print(composites)
