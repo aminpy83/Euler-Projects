@@ -7,26 +7,25 @@ def is_prime(n):
     return True
 
 num = int(input("Enter a number: "))
-factors = []
-composites = []
-fact = num
+max_prime = 0
 prime = 3
+# factors = []
 
 while prime <= ceil(sqrt(num)) :
-    print(prime)
-    if fact % 2 == 0:
-        factors.append(2)
-    elif fact % prime == 0 :
-        factors.append(prime)
+    if num % 2 == 0:
+        max_prime = prime
+    elif num % prime == 0 and is_prime(prime):
+        max_prime = prime
     prime += 2
-# print(max(factors))
+print(max_prime)
 
-for factor in factors:
-    # print(factor)
-    if not(is_prime(factor)):
-        composites.append(factors[factors.index(factor)])
-print(factors)
-print(composites)
-result = list(set(factors) - set(composites))
-print(result)
-print(max(result))
+# composites = []
+# for factor in factors:
+#     # print(factor)
+#     if not(is_prime(factor)):
+#         composites.append(factors[factors.index(factor)])
+# print(factors)
+# print(composites)
+# result = list(set(factors) - set(composites))
+# print(result)
+# print(max(result))
