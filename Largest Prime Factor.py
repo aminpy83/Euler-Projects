@@ -1,5 +1,7 @@
+from math import sqrt, ceil
+
 def IsPrime(n):
-    for i in range(2, n// 2+1):
+    for i in range(2, ceil(sqrt(n))):
         if n % i == 0:
             return False
     return True
@@ -10,22 +12,21 @@ composites = []
 fact = num
 prime = 3
 
-while prime <= num // 2 + 1 :
+while prime <= ceil(sqrt(num)) :
     print(prime)
-    if IsPrime(prime):
-        factors.append(prime)
     if fact % 2 == 0:
         factors.append(2)
-    elif fact % prime == 0 and IsPrime(prime):
+    elif fact % prime == 0 :
         factors.append(prime)
     prime += 2
-print(max(factors))
+# print(max(factors))
 
-# for factor in factors:
-#     print(factor)
-#     if not(IsPrime(factor)):
-#         composites.append(factors[factors.index(factor)])
-# print(factors)
-# print(composites)
-# result = list(set(factors) - set(composites))
-# print(max(result))
+for factor in factors:
+    # print(factor)
+    if not(IsPrime(factor)):
+        composites.append(factors[factors.index(factor)])
+print(factors)
+print(composites)
+result = list(set(factors) - set(composites))
+print(result)
+print(max(result))
