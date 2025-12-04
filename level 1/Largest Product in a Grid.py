@@ -1,3 +1,4 @@
+from pprint import pprint
 a = '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
@@ -19,22 +20,57 @@ a = '''08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 '''
-from pprint import pprint
-grid = []
+
 a = a.replace('\n', ' ')
-pprint(a[0:4])
-print(len(a))
+grid = []
 
+def matrix(s):
+    x = 0
+    for j in range(0, 20):
+        ls = []
+        for i in s[x: x+60].split( sep=' '):
+            if i == '':
+                grid.append(ls)
+                # print(grid)
+                continue
+            ls.append(int(i))
+        x += 60
+matrix(a)
+# for l in grid:
+#     print(l, len(l))
 
-a = a.replace(' ', ',')
-# print(a)
-# grid.append(a.split( sep=' '))
-# pprint(grid)
+def products(l, y, x):
+    right, left, down, up, diagonal_right, diagonal_l, diagonal_ur, diagonal_ul = -1,-1,-1, -1, -1, -1, -1, -1
+    if x <= 16:
+        right = l[y][x] * l[y][x + 1] * l[y][x + 2] * l[y][x + 3]
 
-x = 0
-for j in range(0, 20):
-    grid.append(a[x:x+20].split(sep=' '))
-    x += 20
-pprint(grid)
-for i in grid:
-    print(len(i))
+    if x >= 4 :
+        left = l[y][x] * l[y][x - 1] * l[y][x - 2] * l[y][x - 3]
+
+    if y <= 16:
+        down = l[y][x] * l[y + 1][x] * l[y + 2][x] * l[y + 3][x]
+
+    if y >= 4 :
+        up = l[y][x] * l[y - 1][x] * l[y - 2][x] * l[y - 3][x]
+
+    if x <= 16 and y <= 16:
+        diagonal_right = l[y][x] * l[y + 1][x + 1] * l[y + 2][x + 2] * l[y + 3][x + 3]
+
+    if x >= 4 and y >= 4:
+        diagonal_l = l[y][x] * l[y - 1][x - 1] * l[y - 2][x - 2] * l[y - 3][x - 3]
+
+    if x <= 16 and y >= 4:
+        diagonal_ur = l[y][x] * l[y - 1][x + 1] * l[y - 2][x + 2] * l[y - 3][x + 3]
+
+    if x >= 4 and y <= 16:
+        diagonal_ul = l[y][x] * l[y - 1][x - 1] * l[y - 2][x - 2] * l[y - 3][x - 3]
+
+    return max(right, left, down, up, diagonal_right, diagonal_l, diagonal_ur, diagonal_ul)
+
+largest = 0
+for dir_y in range(0, 20):
+    for dir_x in range(0, 20):
+        if products(grid, dir_y, dir_x) > largest:
+            largest = products(grid, dir_y, dir_x)
+print(largest)
+
