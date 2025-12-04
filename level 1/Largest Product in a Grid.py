@@ -73,4 +73,4 @@ for dir_y in range(0, 20):
         if products(grid, dir_y, dir_x) > largest:
             largest = products(grid, dir_y, dir_x)
 print(largest)
-
+#70600674
