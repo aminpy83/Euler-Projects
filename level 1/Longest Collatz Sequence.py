@@ -12,5 +12,5 @@ def collatz(n):
         return collatz(n)
 
 x = 13
-while x < 1000_000:
+while x < 1_000_000:
     collatz(x)
