@@ -24,7 +24,7 @@ while i < len(triangle) -2:
     if triangle[i] == '\n' or triangle[i] == ' ':
         pass
 
-    elif (triangle[i] != ' ' and triangle[i+1]) != ' ':
+    elif (triangle[i].isnumeric() and triangle[i+1]).isnumeric():
         num = triangle[i]+triangle[i+1]
         ls.append(int(num))
 
@@ -32,4 +32,4 @@ while i < len(triangle) -2:
             nums.append(ls)
             ls = []
     i += 1
-# pprint(nums)
+pprint(nums)
