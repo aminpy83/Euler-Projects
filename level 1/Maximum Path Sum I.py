@@ -19,15 +19,17 @@ triangle = '''
 nums, ls = [], []
 a = enumerate(triangle)
 i = 0
-
+#making triangle
 while i < len(triangle) -2:
     if triangle[i] == '\n' or triangle[i] == ' ':
         pass
+
     elif (triangle[i] != ' ' and triangle[i+1]) != ' ':
         num = triangle[i]+triangle[i+1]
         ls.append(int(num))
+
         if '\n' in triangle[i+2]:
             nums.append(ls)
             ls = []
     i += 1
-pprint(nums)
+# pprint(nums)
