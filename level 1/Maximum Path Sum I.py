@@ -16,20 +16,35 @@ triangle = '''
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 '''
-nums, ls = [], []
-a = enumerate(triangle)
-i = 0
+# nums, ls = [], []
+# a = enumerate(triangle)
+# i = 0
 #making triangle
-while i < len(triangle) -2:
-    if triangle[i] == '\n' or triangle[i] == ' ':
-        pass
+# while i < len(triangle) -2:
+#     if triangle[i] == '\n' or triangle[i] == ' ':
+#         pass
+#
+#     elif (triangle[i].isnumeric() and triangle[i+1]).isnumeric():
+#         num = triangle[i]+triangle[i+1].]
+#         ls.append(int(num))
+#
+#         if '\n' in triangle[i+2]:
+#             nums.append(ls)
+#             ls = []
+#     i += 1
+# pprint(nums)
 
-    elif (triangle[i].isnumeric() and triangle[i+1]).isnumeric():
-        num = triangle[i]+triangle[i+1]
-        ls.append(int(num))
+# def max_finder(l):
+#     lst = ls.copy()
+#     first_max = lst.index(max(lst))
+#     max(lst.pop(first_max))
 
-        if '\n' in triangle[i+2]:
-            nums.append(ls)
-            ls = []
-    i += 1
+# triangle
+triangle = triangle[1:].splitlines()
+nums = []
+for line in triangle:
+    line = line.split(' ')
+    x = map(int, line)
+    nums.append(list(x))
 pprint(nums)
+
