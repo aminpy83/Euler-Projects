@@ -48,3 +48,8 @@ for line in triangle:
     nums.append(list(x))
 pprint(nums)
 
+for i in range(len(nums) - 2, -1, -1):
+    for j in range(len(nums[i])):
+        nums[i][j] += max(nums[i+1][j], nums[i + 1][j+1])
+    nums.pop()
+pprint(nums)
