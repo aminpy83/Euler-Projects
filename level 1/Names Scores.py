@@ -1,4 +1,4 @@
-with open('/home/amin/Downloads/0022_names.txt', 'r') as f:
+with open('0022_names.txt', 'r') as f:
     content = f.read()
     content = content.replace(r'"', '')
     ls = sorted(content.split(','))
