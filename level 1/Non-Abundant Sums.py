@@ -19,7 +19,7 @@ def is_abundant(n):
     if n in abundant_cache:
         return True
 
-    divs_sum = set()
+    divs_sum = set()        # using set to evade repetitive numbers in perfect squares
     for i in range(2, ceil(sqrt(n)) + 1):
         if n % i == 0:
             divs_sum.add(i)
