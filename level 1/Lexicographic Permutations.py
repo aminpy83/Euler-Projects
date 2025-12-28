@@ -1,12 +1,7 @@
-sort_count = 1
-nums = list(range(10))
-# while sort_count < 1_000_000:
-for num in nums:
-    changing_nums = set(nums) - {num}
-    consts = str(num)
-    for j in changing_nums:
-        a = consts + str(j) + str(sorted(changing_nums - {j}))
-        print(a)
+from itertools import permutations
 
+numbers = list(range(10))
+nums = list(map(lambda x: str(x), numbers))
 
-    break
+a = list(permutations(nums))
+print(a[999_999])
